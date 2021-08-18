@@ -42,7 +42,7 @@ const { check, validationResult } = require('express-validator');
         }
     }));
 
-    let auth = require('./auth')(app);
+     require('./auth')(app);
     const passport = require('passport');
     require('./passport');
     
@@ -142,7 +142,7 @@ app.get('/', (req, res) => {
               return res.status(422).json({ errors: errors.array()
             });
           }
-       let hashedPassword = Users.hashedPassword(req.body.Password);
+       let hashedPassword = Users.hashPassword(req.body.Password);
         Users.findOne({Username: req.body.Username })
         .then((user) => {
              if (user) {
@@ -224,15 +224,16 @@ app.get('/', (req, res) => {
 
     //------Add Movies to Users favorites-----
     app.post('/users/:id/movies/:Title',  passport.authenticate('jwt', { session: false }), (req, res) => {
-        Users.findOneAndUpdate({_id: req.params.id }, {
+        Users
+        .findOneAndUpdate({_id: req.params.id }, {
           $push: { FavoriteMovies: req.params.Title}
-        }),
-        { new: true}, // update is returned  
-         ((err, user) => {
+        },
+        { new: true }, // update is returned  
+         (err, user) => {
             if (err) {
                 console.error(err);
                 res.status(500).send('Error: ' + err);
-            }else {
+            } else {
                 res.json(user);
             }
         });
@@ -242,9 +243,9 @@ app.get('/', (req, res) => {
     app.delete('/users/:id/movies/:Title',  passport.authenticate('jwt', { session: false }), (req, res) => {
         Users.findOneAndUpdate({_id: req.params.id }, {
           $pull: { FavoriteMovies: req.params.Title}
-        }),
+        },
         { new: true}, // update is returned  
-         ((err, user) => {
+         (err, user) => {
             if (err) {
                 console.error(err);
                 res.status(500).send('Error: ' + err);
