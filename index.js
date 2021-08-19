@@ -128,7 +128,7 @@ app.get('/', (req, res) => {
             });
     });
 
-    //------Adding a new User-----
+    //------Adding a new User  with validation-----
     app.post('/users',
       [
           check('Username', 'Username is required').isLength({min: 5}),
@@ -170,8 +170,15 @@ app.get('/', (req, res) => {
     });
 
 
-    //-----Updating a users information
-    app.put('/users/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    //-----Updating a users information if user updates one they have to update all----
+    app.put('/users/:id', passport.authenticate('jwt', { session: false }),
+    [
+        check('Username', 'Username is required').isLength({min: 5}),
+        check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+        check('Password', 'Password is required').not().isEmpty(),
+        check('Email', 'Email does not appear to be valid').isEmail()
+    ],
+    (req, res) => {
        Users.findOne({_id: req.params.id })
        .then((user) => {
            if (!user) {
