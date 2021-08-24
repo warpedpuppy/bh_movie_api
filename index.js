@@ -13,12 +13,12 @@ const { check, validationResult } = require('express-validator');
   Users = Models.User;
  
 
-  mongoose.connect('mongodb://localhost:27017/myFlixDB', {
+ // mongoose.connect('mongodb://localhost:27017/myFlixDB', {
     useNewUrlParser: true,
-    useUnifiedTopology: true 
-  });
+  //  useUnifiedTopology: true 
+  //});
 
-  mongoose.connect('mongodb+srv://test_user:test_user@cluster0.pzp56.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+  mongoose.connect( process.env.CONNECTION_URI, 
   { useNewUrlParser: true, useUnifiedTopology: true });
 
     
