@@ -18,6 +18,9 @@ const { check, validationResult } = require('express-validator');
     useUnifiedTopology: true 
   });
 
+  mongoose.connect('mongodb+srv://test_user:test_user@cluster0.pzp56.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+  { useNewUrlParser: true, useUnifiedTopology: true });
+
     
 
      
