@@ -14,7 +14,7 @@ const { check, validationResult } = require('express-validator');
  
 
  // mongoose.connect('mongodb://localhost:27017/myFlixDB', {
-    useNewUrlParser: true,
+   // useNewUrlParser: true,
   //  useUnifiedTopology: true 
   //});
 
