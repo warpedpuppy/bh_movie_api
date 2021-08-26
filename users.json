@@ -1,0 +1,4 @@
+{"_id":{"$oid":"610a038e446cf98acbad623c"},"Username":"sammyg","Password":"1234","Email":"sammyg@gmail.com","Birthday":"01/01/1983","FavoriteMovies":["Training Day","The Equalizer",{"$oid":"6109f9ab446cf98acbad6237"}]}
+{"_id":{"$oid":"610a044d446cf98acbad623d"},"username":"dan","password":"4321","email":"dan@gmail.com","Birthday":"04/01/1989","FavoriteMovies":["Training Day","Under Seige"]}
+{"_id":{"$oid":"610a04a1446cf98acbad623e"},"username":"kent","password":"5678","email":"kent@gmail.com","Birthday":"10/01/1889","FavoriteMovies":["The Last Dance","Under Seige"]}
+{"_id":{"$oid":"610a0545446cf98acbad623f"},"username":"stu","password":"8765","email":"stu@gmail.com","Birthday":"11/15/1999","FavoriteMovies":["The Last Dance","The Queen's Gambit"]}
